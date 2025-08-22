@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perkenalan — hai</title>
+  
+  <meta name="google-site-verification" content="google-site-verification: google84b898598ede7242.html">
+  
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#7c3aed;
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;
+      background:linear-gradient(180deg,var(--bg),#071124 120%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition: background 0.4s, color 0.4s;
+    }
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
+    .card{
+      width:100%;
+      max-width:920px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      border-radius:14px;
+      padding:28px;
+      display:grid;
+      grid-template-columns:260px 1fr;
+      gap:24px;
+      box-shadow:0 8px 30px rgba(2,6,23,0.6);
+      transition: box-shadow 0.4s, border 0.4s;
+    }
+    .avatar{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .photo{
+      width:160px;height:160px;border-radius:16px;overflow:hidden;
+      box-shadow:0 10px 30px rgba(124,58,237,0.16);
+    }
+    .photo img{
+      width:100%;height:100%;object-fit:cover;
+      transition: transform 0.4s ease;
+    }
+    .photo img:hover{transform: scale(1.08) rotate(2deg);}
+    .nickname{margin-top:14px;font-family:'Courier New', monospace;font-weight:600;font-size:14px;color:var(--accent)}
+    .small{font-variant:all-small-caps;opacity:0.95}
+    .meta{margin-top:8px;color:var(--muted);font-size:13px}
+    h1{margin:0;font-size:20px}
+    p.lead{color:var(--muted);margin-top:8px;line-height:1.5}
+    .tags{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{
+      background:var(--glass);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+      cursor:pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .tag:hover{background:rgba(124,58,237,0.1); transform: scale(1.05);}
+    .about{margin-top:18px;color:#dbeafe;padding:16px;border-radius:10px;background:linear-gradient(90deg, rgba(124,58,237,0.04), rgba(6,182,212,0.02));border:1px solid rgba(124,58,237,0.06)}
+    .socials{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);cursor:pointer;text-decoration:none;color:inherit;
+      transition: all 0.3s ease;
+    }
+    .btn:hover{
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(124,58,237,0.3);
+    }
+    .btn svg{width:18px;height:18px;opacity:0.95}
+    .btn .label{font-size:14px}
+    .ghost {
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: rgba(124,58,237,0.12);
+      border: none;
+      cursor: pointer;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .ghost:hover {background: rgba(124,58,237,0.24);}
+    .actions{margin-top:20px;display:flex;gap:12px}
+    footer{margin-top:22px;color:var(--muted);font-size:13px}
+
+    /* Modal CSS */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      transition: opacity 0.3s ease;
+    }
+    .modal.show {display:block;}
+    .modal-content {
+      background: var(--card);
+      color: inherit;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+    }
+    .modal.show .modal-content {transform: translateY(0);}
+    .modal-content .close {
+      float: right;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    @media (max-width:760px){
+      .card{grid-template-columns:1fr;}
+      .avatar{flex-direction:row;gap:12px;align-items:center}
+      .photo{width:84px;height:84px;border-radius:12px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <article class="card">
+      <aside class="avatar">
+        <div class="photo" id="photo">
+          <img src="https://files.catbox.moe/7pzk20.jpeg" alt="Avatar">
+        </div>
+        <div style="margin-top:8px">
+          <div class="nickname small">ʀᴇǫᴜɪʀᴇ('169749265117')</div>
+          <div class="meta">Coder • Creator • Programmer • Terminal Aesthetic</div>
+        </div>
+      </aside>
+      <section>
+        <h1 id="intro"></h1>
+        <p class="lead">Halo, perkenalkan nama saya Revi. Saya sangat menyukai dunia programming, termasuk menjadi programmer, coder, dan tertarik dengan ethical hacking. Saya selalu antusias mempelajari hal-hal baru seputar teknologi dan keamanan siber, serta senang berbagi pengetahuan dengan orang lain.</p>
+        <div class="tags">
+          <div class="tag">JavaScript</div>
+          <div class="tag">Programmer</div>
+          <div class="tag">WhatsApp/Telegram Bot</div>
+        </div>
+        <div class="about">
+          <strong>Sedikit tentang saya:</strong>
+          <p style="margin:8px 0 0 0;color:#e6eef8;font-size:14px;line-height:1.45">
+            Aku suka membangun program bot Telegram/Wa, Ethical Hacking lainnya, dan berbagi ilmu yang saya ketahui. Kalau kamu ingin kerja bareng atau tanya-tanya soal bot Programming, hubungi lewat salah satu link media saya di bawah.
+          </p>
+        </div>
+        <div class="socials">
+          <a class="btn" href="https://www.tiktok.com/@plebigman" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden>
+              <path d="M9 8v8a4 4 0 1 0 4-4V5h3" />
+            </svg>
+            <span class="label">TikTok</span>
+          </a>
+          <a class="btn" href="https://www.instagram.com/cristianoronaldo" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8"></path>
+              <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+            </svg>
+            <span class="label">Instagram</span>
+          </a>
+          <a class="btn" href="https://t.me/admzzzzx" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2L11 13"></path>
+              <path d="M22 2L15 22l-4-9-9-4 20-7z"></path>
+            </svg>
+            <span class="label">Telegram</span>
+          </a>
+          <a class="btn" href="https://wa.me/6283152255454?text=Halo%20Revmonylast!" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2h-1l-3 3v-1a9 9 0 1 1 6-8z"></path>
+            </svg>
+            <span class="label">WhatsApp</span>
+          </a>
+          <a class="btn" href="#" onclick="toggleSound();return false;">
+            <img src="https://files.catbox.moe/12q0u7.png" alt="Sound Thumbnail" style="width:20px;height:20px;border-radius:4px;object-fit:cover;">
+            <span class="label" id="soundLabel">Play Sound</span>
+          </a>
+          <audio id="soundPlayer" src="https://pomf2.lain.la/f/jum3kjlo.mp3"></audio>
+        </div>
+        <div class="actions">
+          <a class="ghost" href="#" onclick="copyHandle();return false">Copy handle</a>
+          <a class="ghost" href="#" onclick="themeFlash();return false">Toggle highlight</a>
+          <a class="ghost" href="#" onclick="toggleTheme();return false">Toggle Theme</a>
+        </div>
+        <footer>
+          <div>Note: welcome to <em>my </em>website:1</div>
+        </footer>
+      </section>
+    </article>
+  </main>
+
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <script>
+    // Typewriter Effect
+    const text = "Halo — aku Revi";
+    let i = 0;
+    function typeWriter(){
+      if(i < text.length){
+        document.getElementById("intro").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+    window.onload = typeWriter;
+
+    // Copy handle
+    function copyHandle(){
+      const txt = "haloo bang, mau ngapain:3";
+      navigator.clipboard?.writeText(txt).then(()=>{
+        alert('Teks disalin: '+txt);
+      }).catch(()=>{alert('Tidak bisa menyalin, salin manual: '+txt)})
+    }
+
+    // Highlight flash
+    function themeFlash(){
+      const card = document.querySelector('.card');
+      card.style.boxShadow='0 14px 50px rgba(124,58,237,0.28)';
+      setTimeout(()=>{card.style.boxShadow='0 8px 30px rgba(2,6,23,0.6)';},600);
+    }
+
+    // Audio toggle
+    function toggleSound(){
+      const audio = document.getElementById('soundPlayer');
+      const label = document.getElementById('soundLabel');
+      if(audio.paused){
+        audio.play();
+        label.textContent = 'Pause Sound';
+      } else {
+        audio.pause();
+        label.textContent = 'Play Sound';
+      }
+    }
+
+    // Dark/Light Mode
+    let darkMode = true;
+    function toggleTheme(){
+      darkMode = !darkMode;
+      if(darkMode){
+        document.documentElement.style.setProperty('--bg','#0f1724');
+        document.documentElement.style.setProperty('--card','#0b1220');
+        document.documentElement.style.setProperty('--accent','#7c3aed');
+        document.documentElement.style.setProperty('--muted','#94a3b8');
+        document.body.style.color="#e6eef8";
+      } else {
+        document.documentElement.style.setProperty('--bg','#f5f5f5');
+        document.documentElement.style.setProperty('--card','#ffffff');
+        document.documentElement.style.setProperty('--accent','#7c3aed');
+        document.documentElement.style.setProperty('--muted','#64748b');
+        document.body.style.color="#1e293b";
+      }
+    }
+
+    // Modal logic
+    const modal = document.getElementById('infoModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+
+    function showInfo(title, desc){
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+      modal.classList.add('show');
+    }
+
+    function closeModal(){
+      modal.classList.remove('show');
+    }
+
+    document.querySelectorAll('.tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        if(tag.textContent === 'JavaScript'){
+          showInfo('JavaScript', 'JavaScript adalah bahasa pemrograman untuk web yang interaktif dan dinamis.');
+        } else if(tag.textContent === 'Programmer'){
+          showInfo('Programmer', 'Programmer adalah orang yang menulis kode untuk membuat software atau aplikasi.');
+        } else if(tag.textContent === 'WhatsApp/Telegram Bot'){
+          showInfo('WhatsApp/Telegram Bot', 'Bot adalah program otomatis yang dapat menjalankan perintah di platform chat seperti WhatsApp atau Telegram.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
